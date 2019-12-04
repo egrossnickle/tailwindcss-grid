@@ -9,6 +9,8 @@ module.exports = function({
   const gaps = theme('grid.gaps', {})
   const autoMinWidths = theme('grid.autoMinWidths', {})
   const variants = theme('grid.variants', ['responsive'])
+  const columnSpanPosition = theme('grid.columnSpanPosition', 'start')
+  const rowSpanPosition = theme('grid.rowSpanPosition', 'start')
 
   addUtilities(
     [{
@@ -46,7 +48,7 @@ module.exports = function({
       })),
       ..._.range(1, _.max(grids) + 1).map(span => ({
         [`.col-span-${span}`]: {
-          gridColumnStart: `span ${span}`,
+          [`grid-column-${columnSpanPosition}`]: `span ${span}`,
         },
       })),
       ..._.range(1, _.max(grids) + 2).map(line => ({
@@ -59,7 +61,7 @@ module.exports = function({
       })),
       ..._.range(1, _.max(grids) + 1).map(span => ({
         [`.row-span-${span}`]: {
-          gridRowStart: `span ${span}`,
+          [`grid-row-${rowSpanPosition}`]: `span ${span}`,
         },
       })),
       ..._.range(1, _.max(grids) + 2).map(line => ({
